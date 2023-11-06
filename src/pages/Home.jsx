@@ -2,7 +2,8 @@ import { TextField,MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Categories from '../Categories';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Home({ name, setName, fetchQeastions }) {
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("");
@@ -12,6 +13,7 @@ function Home({ name, setName, fetchQeastions }) {
         
         if(!category||!difficulty||!name){
             setError(true)
+            toast.error('please fill the form completely  !!!')
             return
         }else{
             setError(false)
@@ -21,9 +23,10 @@ function Home({ name, setName, fetchQeastions }) {
     }
 
   return (
-    <div className='w-50 d-flex flex-wrap align-items-center justify-content-center'>
-        <div  className='d-flex flex-column w-75 '>
-            {error && <p className='text-danger'>please Fill the form completely !!!</p>}
+    <div className='w-75 d-flex flex-column flex-wrap align-items-center justify-content-center bg-light  border rounded shadow'>
+       <div   className='text-dark bg-light align-items-center justify-content-center p-2 rounded'><h1>Quiz App</h1></div>
+        <div className='d-flex flex-wrap pb-5 pt-5 ps-2 pe-2 flex-column w-50 '>
+            
         <TextField
             style={{ marginBottom: 25}}
             label=" Name"
@@ -66,9 +69,19 @@ function Home({ name, setName, fetchQeastions }) {
               Hard
             </MenuItem>
           </TextField>
-          <button onClick={handleSubmit} className='btn btn-primary'>Start</button>
+          <button onClick={handleSubmit} className='btn btn-success'>Start Quiz</button>
         </div>
-
+        <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"/>
     </div>
   )
 }

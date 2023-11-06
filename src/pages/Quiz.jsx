@@ -1,6 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect,useState } from 'react'
 import Question from '../components/Question';
+import Timer from '../components/Timer';
 
 function Quiz({name,total,setTotal,questions,setQuestions}) {
     const [options, setOptions] = useState();
@@ -21,18 +22,21 @@ function Quiz({name,total,setTotal,questions,setQuestions}) {
         return optionss.sort(() => Math.random() - 0.5);
       };
   return (
-    <div className='w-50'>
-        <h3 className='text-center text-shadow'>welcome,{name}</h3>
+    <div className='d-flex flex-wrap flex-column w-75 bg-light p-3 border rounded shadow'>
+        <h3 className='text-center text-shadow fw-bolder p-3'>Welcome,<span className='text-success'>{" "+name}</span></h3>
        <div>
         {
           questions?(
-            <>
-            <div className="d-flex justify-content-between w-100">
+            <div className='row'>
+            <div className="d-flex justify-content-between align-items-center w-100 text-danger fw-bolder">
             <span>{questions[currQues].category}</span>
-            <span>
-              {/* {questions[currQues].difficulty} */}
-              Score : {total}/20
+          <div className='d-flex flex-column' >  <Timer duration={1*60*1000}/>
+          <span className='mt-3'>
+              
+              Score : {total}/10
             </span>
+          </div>
+           
           </div>
           <Question
           currQues={currQues}
@@ -43,8 +47,8 @@ function Quiz({name,total,setTotal,questions,setQuestions}) {
           correct={questions[currQues]?.correct_answer}  
           setTotal={setTotal}
           setQuestions={setQuestions}        />
-            </>
-          ):<CircularProgress/>
+            </div>
+          ):<CircularProgress style={{overflowY:'hidden',alignItems:'center'}}/>
         }
        </div>
         

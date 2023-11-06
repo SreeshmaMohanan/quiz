@@ -11,7 +11,7 @@ function App() {
   const [total,setTotal]=useState(0)
   const fetchQeastions =async (category = "", difficulty = "") => {
     const { data } = await axios.get(
-      `https://opentdb.com/api.php?amount=20${
+      `https://opentdb.com/api.php?amount=10${
         category && `&category=${category}`
       }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
     );
@@ -20,8 +20,8 @@ function App() {
   };
 
   return (
-    <div className="d-flex flex-wrap flex-column w-100 align-items-center justify-content-center" style={{height:'100vh'}}>
-      <div><h1>Quiz App</h1></div>
+    <div className="d-flex flex-wrap flex-column w-100 align-items-center justify-content-center app" style={{height:'100vh'}}>
+     
       <Routes>
         <Route path='/' element={<Home name={name} setName={setName} fetchQeastions={fetchQeastions} />}></Route>
         <Route path='/quiz' element={<Quiz name={name} questions={questions} total={total} setTotal={setTotal} setQuestions={setQuestions}  />}></Route>

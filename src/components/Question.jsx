@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Question.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Question({ currQues,
     setCurrQues,
     questions,
@@ -31,22 +33,24 @@ function Question({ currQues,
 
     }
     const handleNext=()=>{
-        if (currQues >18) {
+        if (currQues >8) {
             navigate("/result");
           } else if (selected) {
             setCurrQues(currQues + 1);
             setSelected();
-          } else setError("Please select an option first");
-        };
-        const handleQuit = () => {
+          } else {
+            toast.warning(`select an option`)
+          }
+        }
+     const handleQuit = () => {
             setCurrQues(0);
-            setQuestions();
+            navigate('/result')
           };
   return (
-    <div>
-        <h3>Question{currQues+1}:</h3>
-        <div className=''>
-            <h4>{questions[currQues].question}</h4>
+    <div className='question'>
+        
+        <div className='singleQuestion'>
+            <h4><span style={{fontSize:'30px'}} className='text-primary fw-bolder'>Q{currQues+1}:</span>{questions[currQues].question}</h4>
             <div className='options'>
             {error && {error}}
           {options &&
@@ -61,12 +65,23 @@ function Question({ currQues,
               </button>
             ))}
              </div>
-             <div className='d-flex justify-content-evenly m-3 p-3'>
+             <div className='d-flex justify-content-evenly m-3 p-3 controls'>
                 <button onClick={handleQuit}  className='btn btn-warning'>Quit</button>
                 <button onClick={handleNext} className='btn btn-info'>Next</button>
                
              </div>
             </div>
+            <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"/>
         </div>
    
   )
