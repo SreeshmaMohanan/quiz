@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home name={name} setName={setName} fetchQeastions={fetchQeastions} />}></Route>
         <Route path='/quiz' element={<Quiz name={name} questions={questions} total={total} setTotal={setTotal} setQuestions={setQuestions}  />}></Route>
-        <Route path='/result' element={<Result name={name} total={total} />}></Route>
+        <Route path='/result' element={<Result name={name} total={total} setTotal={setTotal} />}></Route>
       </Routes>
      
     </div>

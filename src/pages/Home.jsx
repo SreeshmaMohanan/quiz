@@ -24,7 +24,7 @@ function Home({ name, setName, fetchQeastions }) {
 
   return (
     <div className='w-75 d-flex flex-column flex-wrap align-items-center justify-content-center bg-light  border rounded shadow'>
-       <div   className='text-dark bg-light align-items-center justify-content-center p-2 rounded'><h1>Quiz App</h1></div>
+       <div   className='text-dark bg-light mt-5 align-items-center justify-content-center p-2 rounded'><h1>Quiz App</h1></div>
         <div className='d-flex flex-wrap pb-5 pt-5 ps-2 pe-2 flex-column w-50 '>
             
         <TextField

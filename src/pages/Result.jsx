@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
-function Result({name,total}) {
+function Result({name,total,setTotal}) {
   const navigate=useNavigate()
   useEffect(()=>{
-    if(!name){
+    if(name){
+      setTotal(0)
       navigate('/')
-
     }
   },[name,navigate])
   return (
