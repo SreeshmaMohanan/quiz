@@ -17,6 +17,7 @@ function App() {
     );
 
     setQuestions(data.results);
+    setTotal(0)
   };
 
   return (

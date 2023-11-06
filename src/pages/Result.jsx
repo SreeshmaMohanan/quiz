@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 function Result({name,total,setTotal}) {
   const navigate=useNavigate()
   useEffect(()=>{
-    if(name){
+    if(!name){
       setTotal(0)
       navigate('/')
+    }else{
+      
     }
   },[name,navigate])
   return (
