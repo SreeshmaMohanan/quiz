@@ -1,8 +1,7 @@
-import { CircularProgress } from '@mui/material';
 import React, { useEffect,useState } from 'react'
 import Question from '../components/Question';
 import Timer from '../components/Timer';
-
+import Spinner from 'react-bootstrap/Spinner';
 function Quiz({name,total,setTotal,questions,setQuestions}) {
     const [options, setOptions] = useState();
     const [currQues, setCurrQues] = useState(0);
@@ -48,7 +47,11 @@ function Quiz({name,total,setTotal,questions,setQuestions}) {
           setTotal={setTotal}
           setQuestions={setQuestions}        />
             </div>
-          ):<CircularProgress style={{overflowY:'hidden',alignItems:'center'}}/>
+          ):<div className='d-flex align-items-center justify-content-center'>
+           <Spinner animation="border" variant="info" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          </div>
         }
        </div>
         
